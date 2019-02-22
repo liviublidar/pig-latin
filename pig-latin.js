@@ -1,4 +1,4 @@
-let translate = (english) =>{
+let translate = (english) => {
     const VOWELS = ['a', 'e', 'i', 'o', 'u'];
     const TRICKY_VOWELS = ['xr', 'yt'];
     const CONSONANT_DIGRAPHS = [
@@ -19,14 +19,16 @@ let translate = (english) =>{
             }
         }
 
-       for(let consonantCluster of CONSONANT_TRIGRAPHS.concat(CONSONANT_DIGRAPHS)){
-           if(word.indexOf(consonantCluster) === 0) {
-               let sliced = word.slice(consonantCluster.length, word.length);
-               return sliced.indexOf('qu') === 0 ? sliced.slice(2, sliced.length) + consonantCluster + 'quay' : sliced + consonantCluster + 'ay';
-           }
-       }
+        for(let consonantCluster of CONSONANT_TRIGRAPHS.concat(CONSONANT_DIGRAPHS)){
+            if(word.indexOf(consonantCluster) === 0) {
+                let sliced = word.slice(consonantCluster.length, word.length);
+                return sliced.indexOf('qu') === 0 ?
+                    sliced.slice(2, sliced.length) + consonantCluster + 'quay' : sliced + consonantCluster + 'ay';
+            }
+        }
 
-       return  word.indexOf(word.charAt(0) + 'qu') === 0 ? word.slice(3, word.length) + word.charAt(0) + 'quay' : word.slice(1, word.length) + word.charAt(0) + 'ay';
+        return word.indexOf(word.charAt(0) + 'qu') === 0 ?
+            word.slice(3, word.length) + word.charAt(0) + 'quay' : word.slice(1, word.length) + word.charAt(0) + 'ay';
     };
 
     /**
